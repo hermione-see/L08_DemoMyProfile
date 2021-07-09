@@ -8,7 +8,7 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText etName, etGPA;
+    EditText etName, etGPA, etAge;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
         etName = findViewById(R.id.editTextName);
         etGPA = findViewById(R.id.editTextGPA);
+        etAge = findViewById(R.id.editTextAge);
 
     }
 
@@ -29,9 +30,12 @@ public class MainActivity extends AppCompatActivity {
         String strName = etName.getText().toString();
         String strGPA = etGPA.getText().toString();
         float gpa = Float.parseFloat(strGPA);
+        String strAge = etAge.getText().toString();
+        int age = Integer.parseInt(strAge);
 
         prefEdit.putString("name", strName);
         prefEdit.putFloat("gpa", gpa);
+        prefEdit.putInt("age", age);
 
         prefEdit.commit();
 
@@ -46,9 +50,12 @@ public class MainActivity extends AppCompatActivity {
         String strName = prefs.getString("name", "No name set");
         Float gpa = prefs.getFloat("gpa", 0.0f);
         String strGPA = String.valueOf(gpa);
+        Integer age = prefs.getInt("age", 0);
+        String strAge = String.valueOf(age);
 
         etName.setText(strName);
         etGPA.setText(strGPA);
+        etAge.setText(strAge);
 
     }
 }
